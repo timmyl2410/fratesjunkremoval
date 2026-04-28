@@ -4,34 +4,46 @@ import { ImageWithFallback } from './components/figma/ImageWithFallback';
 
 const galleryProjects = [
   {
-    title: 'Cleanout Transformation 1',
+    title: 'Basement Cleanout',
     before: '/trash1before.jpg',
-    after: '/trash1after.jpg'
+    after: '/trash1after.jpg',
+    beforeAlt: 'Basement before junk removal cleanout in Massachusetts',
+    afterAlt: 'Basement after Frates junk removal cleanout in Massachusetts'
   },
   {
-    title: 'Cleanout Transformation 2',
+    title: 'Garage Cleanout',
     before: '/trash2before.jpg',
-    after: '/trash2after.jpg'
+    after: '/trash2after.jpg',
+    beforeAlt: 'Garage before junk removal service in Lakeville MA',
+    afterAlt: 'Garage after junk removal service in Lakeville MA'
   },
   {
-    title: 'Cleanout Transformation 3',
+    title: 'Property Cleanup',
     before: '/trash3before.jpg',
-    after: '/trash3after.jpg'
+    after: '/trash3after.jpg',
+    beforeAlt: 'Property before trash hauling and cleanup',
+    afterAlt: 'Property after trash hauling and cleanup'
   },
   {
-    title: 'Cleanout Transformation 4',
+    title: 'Home Junk Removal',
     before: '/trash4before.jpg',
-    after: '/trash4after.jpg'
+    after: '/trash4after.jpg',
+    beforeAlt: 'Home before junk removal appointment',
+    afterAlt: 'Home after junk removal appointment'
   },
   {
-    title: 'Cleanout Transformation 5',
+    title: 'Debris Hauling',
     before: '/trash5before.jpg',
-    after: '/trash5after.jpg'
+    after: '/trash5after.jpg',
+    beforeAlt: 'Debris before hauling service',
+    afterAlt: 'Debris cleared after hauling service'
   },
   {
-    title: 'Cleanout Transformation 6',
+    title: 'Full Cleanout',
     before: '/trash6before.jpg',
-    after: '/trash6after.jpg'
+    after: '/trash6after.jpg',
+    beforeAlt: 'Space before full junk cleanout',
+    afterAlt: 'Space after full junk cleanout'
   }
 ];
 
@@ -115,8 +127,8 @@ export default function App() {
             <span className="text-white/90 text-sm">Trusted by 100+ Local Customers</span>
           </div>
           <h1 className="text-6xl md:text-8xl mb-6 text-white tracking-tight">
-            Fast, Reliable<br />
-            <span className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] bg-clip-text text-transparent">Junk Removal</span>
+            Junk Removal<br />
+            <span className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] bg-clip-text text-transparent">in Lakeville, MA</span>
           </h1>
           <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-2xl mx-auto leading-relaxed">
             Serving Lakeville, MA and surrounding areas with professional junk removal, trash hauling, and demo services.
@@ -330,7 +342,7 @@ export default function App() {
                     <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                       <ImageWithFallback
                         src={project.before}
-                        alt={`${project.title} before`}
+                        alt={project.beforeAlt}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/55 to-transparent" />
@@ -341,7 +353,7 @@ export default function App() {
                     <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                       <ImageWithFallback
                         src={project.after}
-                        alt={`${project.title} after`}
+                        alt={project.afterAlt}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/45 to-transparent" />
