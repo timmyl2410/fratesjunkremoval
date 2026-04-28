@@ -4,19 +4,34 @@ import { ImageWithFallback } from './components/figma/ImageWithFallback';
 
 const galleryProjects = [
   {
-    title: 'Garage Cleanout',
-    before: '/trash1.jpg',
-    after: '/trash2.jpg'
+    title: 'Cleanout Transformation 1',
+    before: '/trash1before.jpg',
+    after: '/trash1after.jpg'
   },
   {
-    title: 'Property Cleanup',
-    before: '/trash3.jpg',
-    after: '/trash4.jpg'
+    title: 'Cleanout Transformation 2',
+    before: '/trash2before.jpg',
+    after: '/trash2after.jpg'
   },
   {
-    title: 'Haul Away Service',
-    before: '/trash5.jpg',
-    after: '/trash6.jpg'
+    title: 'Cleanout Transformation 3',
+    before: '/trash3before.jpg',
+    after: '/trash3after.jpg'
+  },
+  {
+    title: 'Cleanout Transformation 4',
+    before: '/trash4before.jpg',
+    after: '/trash4after.jpg'
+  },
+  {
+    title: 'Cleanout Transformation 5',
+    before: '/trash5before.jpg',
+    after: '/trash5after.jpg'
+  },
+  {
+    title: 'Cleanout Transformation 6',
+    before: '/trash6before.jpg',
+    after: '/trash6after.jpg'
   }
 ];
 
@@ -76,7 +91,7 @@ export default function App() {
         <div className="relative z-20 text-center px-6 max-w-5xl">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-8">
             <Sparkles className="w-4 h-4 text-[#FF6B35]" />
-            <span className="text-white/90 text-sm">Trusted by 500+ Local Customers</span>
+            <span className="text-white/90 text-sm">Trusted by 100+ Local Customers</span>
           </div>
           <h1 className="text-6xl md:text-8xl mb-6 text-white tracking-tight">
             Fast, Reliable<br />
@@ -267,39 +282,83 @@ export default function App() {
             <h2 className="text-5xl md:text-6xl mb-6 text-black">Our Work</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">See the difference we make</p>
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8">
             {galleryProjects.map((project, idx) => (
               <div
                 key={idx}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
+                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-[#FF6B35]/20"
               >
-                <div className="grid grid-cols-2">
-                  <div className="relative aspect-[4/5] overflow-hidden">
-                    <ImageWithFallback
-                      src={project.before}
-                      alt={`${project.title} before`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <span className="absolute left-4 top-4 rounded-full bg-black/70 px-4 py-2 text-sm text-white backdrop-blur-sm">
-                      Before
-                    </span>
+                <div className="relative">
+                  <div className="grid grid-cols-2">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                      <ImageWithFallback
+                        src={project.before}
+                        alt={`${project.title} before`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/55 to-transparent" />
+                      <span className="absolute left-4 top-4 rounded-full bg-black/75 px-4 py-2 text-sm text-white backdrop-blur-sm">
+                        Before
+                      </span>
+                    </div>
+                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                      <ImageWithFallback
+                        src={project.after}
+                        alt={`${project.title} after`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/45 to-transparent" />
+                      <span className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#F7931E] px-4 py-2 text-sm text-white shadow-lg">
+                        After
+                      </span>
+                    </div>
                   </div>
-                  <div className="relative aspect-[4/5] overflow-hidden">
-                    <ImageWithFallback
-                      src={project.after}
-                      alt={`${project.title} after`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <span className="absolute left-4 top-4 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#F7931E] px-4 py-2 text-sm text-white shadow-lg">
-                      After
-                    </span>
+                  <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-white/80 shadow-[0_0_16px_rgba(0,0,0,0.35)]" />
+                  <div className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#FF6B35] shadow-xl ring-4 ring-white/40">
+                    <ArrowRight className="w-6 h-6" />
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="flex items-center justify-between gap-4 p-6">
                   <h3 className="text-2xl text-black">{project.title}</h3>
+                  <span className="hidden sm:inline-flex rounded-full bg-[#FF6B35]/10 px-4 py-2 text-sm text-[#FF6B35]">
+                    Cleared out
+                  </span>
                 </div>
               </div>
             ))}
+          </div>
+          <div className="mt-12 overflow-hidden rounded-2xl bg-black text-white shadow-2xl">
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
+              <div className="grid grid-cols-2">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <ImageWithFallback
+                    src="/trash1before.jpg"
+                    alt="Before junk removal cleanup"
+                    className="h-full w-full object-cover"
+                  />
+                  <span className="absolute left-4 top-4 rounded-full bg-black/75 px-4 py-2 text-sm text-white backdrop-blur-sm">
+                    Before
+                  </span>
+                </div>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <ImageWithFallback
+                    src="/trash1after.jpg"
+                    alt="After junk removal cleanup"
+                    className="h-full w-full object-cover"
+                  />
+                  <span className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#F7931E] px-4 py-2 text-sm text-white shadow-lg">
+                    After
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center p-8 lg:p-10">
+                <span className="mb-4 text-sm uppercase tracking-wider text-[#FF6B35]">Before & After</span>
+                <h3 className="mb-4 text-4xl text-white">Real spaces, cleared fast.</h3>
+                <p className="text-lg leading-relaxed text-white/75">
+                  Every photo pair shows the same job from start to finish, so visitors can see the kind of difference Frates makes.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
