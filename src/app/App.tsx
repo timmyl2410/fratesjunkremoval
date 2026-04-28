@@ -68,6 +68,15 @@ const reviews = [
   }
 ];
 
+const serviceAreas = [
+  'Lakeville, MA',
+  'Cape Cod, MA',
+  'Plymouth, MA',
+  'Middleboro, MA',
+  'Carver, MA',
+  'Taunton, MA'
+];
+
 export default function App() {
   const [formData, setFormData] = useState({
     name: '',
@@ -300,25 +309,70 @@ export default function App() {
       </section>
 
       {/* Service Area Section */}
-      <section className="py-32 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+      <section className="py-32 px-6 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
             <span className="text-[#FF6B35] tracking-wider uppercase text-sm mb-4 block">Coverage</span>
-            <h2 className="text-5xl md:text-6xl mb-6 text-black">Service Areas</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Proudly serving communities across Massachusetts</p>
+            <h2 className="text-5xl md:text-6xl mb-6 text-black">Junk Removal Service Areas</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Based in Lakeville and serving nearby South Shore, South Coast, and Cape Cod communities.
+            </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {['Lakeville, MA', 'Cape Cod, MA', 'Plymouth, MA', 'Middleboro, MA', 'Carver, MA', 'Taunton, MA'].map((area) => (
-              <div
-                key={area}
-                className="flex items-center gap-3 bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-200 hover:border-[#FF6B35]/30 transition-all duration-300 hover:shadow-lg"
-              >
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#F7931E] flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-white" />
+
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-stretch">
+            <div className="bg-black text-white rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/20 to-transparent" />
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FF6B35] to-[#F7931E] flex items-center justify-center mb-8">
+                  <MapPin className="w-8 h-8 text-white" />
                 </div>
-                <span className="text-lg text-black">{area}</span>
+                <span className="text-[#FF6B35] tracking-wider uppercase text-sm mb-4 block">Home Base</span>
+                <h3 className="text-4xl mb-5">Lakeville, MA</h3>
+                <p className="text-lg text-white/75 leading-relaxed mb-8">
+                  Fast local junk removal, trash hauling, cleanouts, furniture removal, dumpster service, and small demo support throughout the area.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3 rounded-xl bg-white/10 p-4 border border-white/10">
+                    <Clock className="w-5 h-5 text-[#FF6B35]" />
+                    <span>Always Open</span>
+                  </div>
+                  <div className="flex items-center gap-3 rounded-xl bg-white/10 p-4 border border-white/10">
+                    <CheckCircle className="w-5 h-5 text-[#FF6B35]" />
+                    <span>Free Quotes</span>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-5">
+              {serviceAreas.map((area) => (
+                <div
+                  key={area}
+                  className="group flex items-center gap-4 bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-200 hover:border-[#FF6B35]/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                >
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#F7931E] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <MapPin className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xl text-black">{area}</p>
+                    <p className="text-sm text-gray-500">Junk removal & hauling</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-5 rounded-2xl bg-gradient-to-r from-gray-50 to-white border border-gray-200 p-6 md:p-8">
+            <p className="text-lg text-gray-700 text-center md:text-left">
+              Nearby town not listed? Reach out anyway. Frates often handles jobs across surrounding Massachusetts communities.
+            </p>
+            <button
+              onClick={scrollToForm}
+              className="group flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF6B35] to-[#F7931E] px-7 py-4 text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#FF6B35]/30"
+            >
+              <span>Check Availability</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </div>
       </section>
