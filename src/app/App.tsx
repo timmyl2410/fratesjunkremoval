@@ -35,6 +35,27 @@ const galleryProjects = [
   }
 ];
 
+const reviews = [
+  {
+    text: "I highly recommend Ronnie for any junk or trash removal you have to have done around your home. His communication is excellent. Making an appointment was easy, and he came when he said he was going to. He is also so extremely friendly and polite. I showed him to my cellar, told him what I wanted gone, next thing I knew it was gone. Use no one else.",
+    name: "Margret Russell",
+    source: "Facebook recommendation",
+    service: "Home cleanout"
+  },
+  {
+    text: "Frates junk and trash removal is reasonably priced, efficient and easy to do business with. Ronnie delivered the dumpster promptly as promised and was right on time for the pick up. Life made easy. I'm planning on using his service again in the near future!! Highly recommend!!",
+    name: "Michelle Blaton-Cook",
+    source: "Facebook recommendation",
+    service: "Dumpster service"
+  },
+  {
+    text: "Frates Junk and trash removal is the only company I will use going forward. I called on a Tuesday and he was here the next day. I expected him to cancel as it was pouring but he showed up and loaded up in the pouring rain. Frates customer service and commitment to do a great job is what's lacking in so many businesses today. If you need junk or trash removed, call them, I'm positive you'll be as impressed with his service as I am.",
+    name: "Barbara Tripp",
+    source: "Facebook recommendation",
+    service: "Junk removal"
+  }
+];
+
 export default function App() {
   const [formData, setFormData] = useState({
     name: '',
@@ -212,40 +233,56 @@ export default function App() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">Don't just take our word for it</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                text: "I highly recommend Ronnie for any junk or trash removal. His communication is excellent, scheduling was easy, and he showed up exactly when he said he would. Super friendly and got everything done fast.",
-                name: "Margret R."
-              },
-              {
-                text: "Frates Junk and Trash Removal is reasonably priced, efficient, and very easy to work with. Dumpster was delivered and picked up right on time. Made everything simple.",
-                name: "Michelle B."
-              },
-              {
-                text: "I called on a Tuesday and he was here the next day—even in the pouring rain. That kind of reliability is rare. Amazing service and commitment.",
-                name: "Barbara T."
-              }
-            ].map((review, idx) => (
+            {reviews.map((review, idx) => (
               <div
                 key={idx}
-                className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100"
               >
-                <div className="flex gap-1 mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 fill-[#FF6B35] text-[#FF6B35]" />
-                  ))}
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#F7931E] flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-lg">
+                        {review.name
+                          .split(' ')
+                          .map((part) => part[0])
+                          .join('')
+                          .slice(0, 2)}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-black text-lg">{review.name}</p>
+                      <p className="text-sm text-gray-500">{review.source}</p>
+                    </div>
+                  </div>
+                  <span className="rounded-full bg-[#1877F2]/10 px-3 py-1 text-sm text-[#1877F2]">
+                    Facebook
+                  </span>
                 </div>
-                <p className="text-gray-700 mb-8 text-lg leading-relaxed italic">
+                <div className="mb-5 flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-[#FF6B35] text-[#FF6B35]" />
+                  ))}
+                  <span className="ml-2 text-sm text-gray-500">{review.service}</span>
+                </div>
+                <p className="text-gray-700 mb-6 leading-relaxed italic">
                   "{review.text}"
                 </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FF6B35] to-[#F7931E] flex items-center justify-center">
-                    <span className="text-white">{review.name[0]}</span>
-                  </div>
-                  <p className="text-black">{review.name}</p>
+                <div className="border-t border-gray-100 pt-5">
+                  <p className="text-sm text-gray-500">Recommends Frates Junk and Trash Removal</p>
                 </div>
               </div>
             ))}
+          </div>
+          <div className="mt-12 flex justify-center">
+            <a
+              href="https://www.facebook.com/profile.php?id=61579067311115&sk=reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-3 rounded-xl bg-[#1877F2] px-8 py-4 text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#1877F2]/30"
+            >
+              <span>Leave a Facebook Review</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </div>
       </section>
